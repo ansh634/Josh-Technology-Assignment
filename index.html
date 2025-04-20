@@ -1135,8 +1135,8 @@ footer {
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 250px;
   height: 100%;
   background-color: #252b42;
   z-index: 999;
@@ -1146,6 +1146,7 @@ footer {
   align-items: center;
   transform: translateX(100%);
   transition: transform 0.3s ease;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu.active {
@@ -1198,26 +1199,7 @@ footer {
   animation: fadeInUp 0.6s ease forwards;
 }
 
-/* Delay animations for staggered effect */
-.feature-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.feature-item:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.feature-item:nth-child(3) {
-  animation-delay: 0.3s;
-}
 
-.pricing-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.pricing-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.pricing-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
 
 /* Responsive Adjustments */
 @media (max-width: 1400px) {
@@ -2029,16 +2011,33 @@ footer {
         });
         
         // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelectorAll('.nav-links');
-        
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', function() {
-                navLinks.forEach(nav => {
-                    nav.classList.toggle('active');
-                });
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
             });
         }
+
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mobileMenu.classList.contains('active') && 
+                !mobileMenu.contains(event.target) && 
+                !mobileMenuBtn.contains(event.target)) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
         
         // Contact Form Modal
         const contactForm = document.getElementById('contactForm');
