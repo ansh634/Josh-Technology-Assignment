@@ -1,9 +1,7 @@
-// Video Play/Pause Functionality
 const videoContainer = document.querySelector('.video-container');
 const playButton = document.querySelector('.play-button');
 const featureVideo = document.getElementById('featureVideo');
 
-// Show/hide play button based on video state
 function updatePlayButton() {
     if (featureVideo.paused) {
         playButton.style.display = 'flex';
@@ -12,10 +10,8 @@ function updatePlayButton() {
     }
 }
 
-// Initial check
 updatePlayButton();
 
-// Toggle play/pause when clicking the video container
 videoContainer.addEventListener('click', function() {
     if (featureVideo.paused) {
         featureVideo.play();
@@ -25,24 +21,18 @@ videoContainer.addEventListener('click', function() {
     updatePlayButton();
 });
 
-// Update button when video state changes
 featureVideo.addEventListener('play', updatePlayButton);
 featureVideo.addEventListener('pause', updatePlayButton);
 featureVideo.addEventListener('ended', updatePlayButton);
 
-// Make sure video is properly loaded
 featureVideo.addEventListener('loadeddata', function() {
-    // This ensures the video is ready to play
     console.log('Video loaded successfully');
 });
 
-// Fallback in case of loading issues
 featureVideo.addEventListener('error', function() {
     console.error('Error loading video');
-    // You could show an error message or fallback image here
 });
 
-// Testimonial Slider/Carousel
 let currentSlide = 0;
 const slides = document.querySelectorAll('.testimonial-slide');
 const dots = document.querySelectorAll('.dot');
@@ -51,7 +41,6 @@ const slider = document.querySelector('.testimonial-slides');
 function showSlide(index) {
     slider.style.transform = `translateX(-${index * 100}%)`;
     
-    // Update dots
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
     });
@@ -59,7 +48,6 @@ function showSlide(index) {
     currentSlide = index;
 }
 
-// Dot click event
 dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
         showSlide(i);
@@ -67,7 +55,6 @@ dots.forEach((dot, i) => {
     });
 });
 
-// Auto slide
 let slideInterval = setInterval(nextSlide, 5000);
 
 function nextSlide() {
@@ -80,40 +67,32 @@ function resetTimer() {
     slideInterval = setInterval(nextSlide, 5000);
 }
 
-// Pricing Card Selection
 document.addEventListener('DOMContentLoaded', function() {
     const pricingCards = document.querySelectorAll('.pricing-card');
     
     pricingCards.forEach(card => {
         card.addEventListener('click', function() {
-            // Remove active class from all cards
             pricingCards.forEach(c => {
                 c.classList.remove('active');
             });
             
-            // Add active class to clicked card
             this.classList.add('active');
             
             console.log('Pricing card clicked:', this.dataset.plan);
         });
     });
     
-    // Initialize - ensure one card is active
     if (pricingCards.length > 0) {
-        // Find the standard plan or default to the middle card
         const activeCard = document.querySelector('.pricing-card[data-plan="standard"]') || pricingCards[1];
         
-        // Remove active class from all cards first
         pricingCards.forEach(c => {
             c.classList.remove('active');
         });
         
-        // Add active class to the standard/middle card
         activeCard.classList.add('active');
     }
 });
 
-// Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -124,7 +103,6 @@ if (mobileMenuBtn) {
     });
 }
 
-// Close mobile menu when clicking outside
 document.addEventListener('click', function(event) {
     if (mobileMenu.classList.contains('active') && 
         !mobileMenu.contains(event.target) && 
@@ -134,7 +112,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Contact Form Modal
 const contactForm = document.getElementById('contactForm');
 const successModal = document.getElementById('successModal');
 const closeModal = document.querySelector('.close-modal');
@@ -142,28 +119,24 @@ const closeModal = document.querySelector('.close-modal');
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Show modal
     successModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent body scrolling
+    document.body.style.overflow = 'hidden'; 
     
-    // Reset form
     contactForm.reset();
 });
 
 closeModal.addEventListener('click', function() {
     successModal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Re-enable body scrolling
+    document.body.style.overflow = 'auto'; 
 });
 
-// Close modal when clicking outside
 window.addEventListener('click', function(e) {
     if (e.target === successModal) {
         successModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Re-enable body scrolling
+        document.body.style.overflow = 'auto'; 
     }
 });
 
-// Animate elements on scroll
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -182,7 +155,6 @@ function animateOnScroll() {
     });
 }
 
-// Add CSS for animations
 const style = document.createElement('style');
 style.textContent = `
     .feature-item, .pricing-card, .org-content, .proto-content {
@@ -222,6 +194,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Run on initial load and scroll
 window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);

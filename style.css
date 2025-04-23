@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +25,6 @@ img {
   height: auto;
 }
 
-/* Navigation Bar */
 nav {
   display: flex;
   justify-content: space-between;
@@ -126,7 +124,7 @@ nav.scrolled {
 .header {
   background-image: url("./assets/main bg.svg");
   background-size: cover;
-  background-position: top center; /* Focus more on top */
+  background-position: top center; 
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -142,7 +140,6 @@ nav.scrolled {
 
 
 
-/* Add a dark overlay to improve text readability */
 .header::before {
   content: "";
   position: absolute;
@@ -216,7 +213,6 @@ nav.scrolled {
   box-shadow: 0 2px 8px rgba(32, 145, 249, 0.3);
 }
 
-/* Features Section */
 section {
   padding: 80px 0;
   width: 100%;
@@ -298,7 +294,6 @@ section {
   line-height: 1.6;
 }
 
-/* Video Section */
 .video-section {
   padding: 100px 0;
   background-color: white;
@@ -343,7 +338,6 @@ section {
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* Organization Section */
 .organization .container,
 .prototyping .container {
   display: grid;
@@ -378,7 +372,6 @@ section {
   border-radius: 10px;
 }
 
-/* Partners Section */
 .partners {
   background-color: #f5f5f5;
   padding: 80px 0;
@@ -434,7 +427,6 @@ section {
   margin-top: 30px;
 }
 
-/* Testimonials Section */
 .testimonials {
   padding: 60px 20px;
   background-color: white;
@@ -535,7 +527,6 @@ section {
     border-radius: 50%;
 }
 
-/* Pricing Section */
 .pricing {
   background-color: #252b42;
   color: white;
@@ -562,7 +553,7 @@ section {
 
 .pricing-card {
   width: 335px;
-  height: 607px; /* Fixed height */
+  height: 607px;
   background-color: white;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
@@ -581,7 +572,7 @@ section {
 
 .pricing-card:hover {
   transform: scale(1.05);
-  height: 693px; /* Increased height */
+  height: 693px; 
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   padding-top: 80px;
   background-color: #2091f9;
@@ -601,11 +592,10 @@ section {
 }
 
 .pricing-card:hover .pricing-card-content {
-  transform: translateY(20px); /* Adds space at top */
+  transform: translateY(20px);
 }
 
 
-/* Ensure all cards have same transition timing */
 .pricing-card:nth-child(1),
 .pricing-card:nth-child(2),
 .pricing-card:nth-child(3) {
@@ -692,7 +682,6 @@ section {
   color: #374754;
 }
 
-/* Contact Section */
 .contact {
   padding: 80px 0;
   background-color: #fafafa;
@@ -714,7 +703,6 @@ section {
   flex-wrap: wrap;
 }
 
-/* CONTACT FORM */
 .contact-form {
   flex: 1;
   background: white;
@@ -784,12 +772,11 @@ section {
   background-color: #1a7ad9;
 }
 
-/* CONTACT INFO (SIDE BY SIDE) */
 .contact-container {
   display: flex;
   flex-direction: row;
   gap: 40px;
-  align-items: flex-start; /* Align items at the top */
+  align-items: flex-start; 
 }
 
 .contact-info {
@@ -831,12 +818,11 @@ section {
   margin: 0;
 }
 
-/* MAP - RIGHT SIDE */
 .map-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the map horizontally */
+  align-items: center;
   min-width: 300px;
 }
 
@@ -853,7 +839,6 @@ section {
   border: none;
 }
 
-/* SOCIAL ICONS */
 .contact-social {
   display: flex;
   justify-content:flex-start;
@@ -875,7 +860,6 @@ section {
   color: #1a7ad9;
 }
 
-/* RESPONSIVE STYLES */
 @media (max-width: 1300px) {
     .contact{
         flex-direction: column;
@@ -884,7 +868,7 @@ section {
     }
 
     .contact-info-row {
-    justify-content: space-around; /* Better distribution than space-between */
+    justify-content: space-around; 
     flex-wrap: wrap;
     gap: 30px 20px;
     margin-bottom: 20px;
@@ -906,7 +890,7 @@ section {
 @media (max-width: 992px) {
   .contact-container {
     flex-direction: column;
-    align-items: stretch; /* Changed from center to stretch for full width */
+    align-items: stretch; 
     gap: 40px;
   }
 
@@ -916,7 +900,7 @@ section {
   }
 
   .contact-info-row {
-    justify-content: space-around; /* Better distribution than space-between */
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 30px 20px;
     margin-bottom: 20px;
@@ -924,7 +908,7 @@ section {
   
   .map-container {
     margin-top: 20px;
-    order: 1; /* Map comes first in mobile view if desired */
+    order: 1; 
   }
   
   .contact-info {
@@ -952,7 +936,7 @@ section {
   }
   
   .contact-info-row {
-    flex-direction: row; /* Keep items in row until really small screens */
+    flex-direction: row; 
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
@@ -960,7 +944,7 @@ section {
   
   .contact-info .info-item {
     min-width: 120px;
-    flex: 0 1 calc(50% - 20px); /* Two items per row */
+    flex: 0 1 calc(50% - 20px);
   }
   
   .map {
@@ -990,7 +974,6 @@ section {
 }
 
 
-/* Footer */
 footer {
   background-color: #252b42;
   color: white;
@@ -1057,7 +1040,6 @@ footer {
   opacity: 0.8;
 }
 
-/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -1107,7 +1089,6 @@ footer {
   color: #2091f9;
 }
 
-/* Prototyping Section Specific Styles */
 .proto-eyebrow {
   display: block;
   font-size: 14px;
@@ -1161,7 +1142,6 @@ footer {
   outline: none;
 }
 
-/* Mobile Menu */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -1214,7 +1194,6 @@ footer {
   cursor: pointer;
 }
 
-/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1232,7 +1211,6 @@ footer {
 
 
 
-/* Responsive Adjustments */
 @media (max-width: 1400px) {
   .container {
     max-width: 1140px;
@@ -1433,7 +1411,6 @@ footer {
   }
 }
 
-/* Fix for mobile menu */
 @media (max-width: 768px) {
   nav .nav-links.active {
     display: flex;
@@ -1461,7 +1438,6 @@ footer {
   }
 }
 
-/* Extra large screen fixes */
 @media (min-width: 1600px) {
   .container {
     max-width: 1400px;
