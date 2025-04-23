@@ -135,7 +135,7 @@ nav.scrolled {
 }
 
 .header {
-  background-image: url("./assets/main bg.png");
+  background-image: url("./assets/main bg.svg");
   background-size: cover;
   background-position: top center; /* Focus more on top */
   height: 100vh;
@@ -567,63 +567,76 @@ section {
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
-  /* Added to ensure proper stacking context */
   perspective: 1000px;
+  align-items: center;
 }
 
 .pricing-card {
   width: 335px;
-  height: 607px;
+  height: 607px; /* Fixed height */
   background-color: white;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   padding: 40px;
   text-align: center;
   color: #252b42;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  /* Important: Make sure all cards have position absolute */
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow: hidden;
 }
 
 .pricing-card:hover {
+  transform: scale(1.05);
+  height: 693px; /* Increased height */
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Completely revised active card styling */
-.pricing-card.active {
+  padding-top: 80px;
   background-color: #2091f9;
   color: white;
   border: 1px solid #2091f9;
-  /* Extremely high z-index to ensure it's on top */
-  z-index: 9999 !important;
-  /* Force a new stacking context */
-  isolation: isolate;
-  /* Use transform with translateZ to force 3D rendering */
-  transform: scale(1.05) translateY(-15px) translateZ(50px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  /* Add will-change to hint the browser about the transformation */
-  will-change: transform;
 }
 
-.pricing-card.active h3,
-.pricing-card.active .price-amount,
-.pricing-card.active .price-info,
-.pricing-card.active li {
+
+.pricing-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+.pricing-card:hover .pricing-card-content {
+  transform: translateY(20px); /* Adds space at top */
+}
+
+
+/* Ensure all cards have same transition timing */
+.pricing-card:nth-child(1),
+.pricing-card:nth-child(2),
+.pricing-card:nth-child(3) {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+.pricing-card.hover h3,
+.pricing-card.hover .price-amount,
+.pricing-card.hover .price-info,
+.pricing-card.hover li {
   color: white;
 }
 
-.pricing-card.active .btn {
+.pricing-card:hover .btn {
   background-color: white;
   color: #2091f9;
 }
 
-.pricing-card.active .btn:hover {
+.pricing-card.hover .btn:hover {
   background-color: #f0f0f0;
 }
 
@@ -686,14 +699,9 @@ section {
 
 .pricing-features li {
   padding: 10px 0;
-  border-bottom: 1px solid #f5f5f5;
   font-size: 14px;
   color: #374754;
 }
-
-.pricing-card.active .pricing-features li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-} 
 
 /* Contact Section */
 .contact {
@@ -819,10 +827,11 @@ section {
   min-width: 180px;
 }
 
-.contact-info .info-item i {
+.contact-info .info-item .img {
   color: #2091f9;
   font-size: 24px;
   margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .contact-info .info-item p {
@@ -1097,7 +1106,6 @@ footer {
   font-size: 14px;
   color: #374754;
   margin-bottom: 10px;
-  text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
 }
@@ -1489,7 +1497,7 @@ footer {
         </div>
         
         <div class="logo">
-            <img src="./assets/figmaland.png" alt="Figma Land">
+            <img src="./assets/figmaland.svg" alt="Figma Land">
         </div>
         
         <div class="social-icons right-links">
@@ -1541,21 +1549,21 @@ footer {
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <img src="./assets/feature1.png" alt="Feature Icon">
+                        <img src="./assets/feature1.svg" alt="Feature Icon">
                     </div>
                     <h3>OpenType features Variable fonts</h3>
                     <p>Slate helps you see how many more days you need to work to reach your financial goal.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <img src="./assets/feature2.png" alt="Feature Icon">
+                        <img src="./assets/feature2.svg" alt="Feature Icon">
                     </div>
                     <h3>Design with real data</h3>
                     <p>Slate helps you see how many more days you need to work to reach your financial goal.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <img src="./assets/feature3.png" alt="Feature Icon">
+                        <img src="./assets/feature3.svg" alt="Feature Icon">
                     </div>
                     <h3>Fastest way to take action</h3>
                     <p>Slate helps you see how many more days you need to work to reach your financial goal.</p>
@@ -1588,7 +1596,7 @@ footer {
                 <a href="#" class="btn">Try For Free</a>
             </div>
             <div class="org-image">
-                <img src="./assets/pc.png" alt="Organization interface">
+                <img src="./assets/pc.svg" alt="Organization interface">
             </div>
         </div>
     </section>
@@ -1597,7 +1605,7 @@ footer {
     <section class="prototyping">
         <div class="container">
             <div class="proto-image">
-                <img src="./assets/ligthning.png" alt="Prototyping illustration">
+                <img src="./assets/lightning.svg" alt="Prototyping illustration">
             </div>
             <div class="proto-content">
                 <span class="proto-eyebrow">At your fingertips</span>
@@ -1625,35 +1633,35 @@ footer {
         <div class="partners-grid">
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/goggle.png" alt="Google"></div>
+                <div class="partner-logo"><img src="./assets/google.svg" alt="Google"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/amazon.png" alt="Amazon"></div>
+                <div class="partner-logo"><img src="./assets/amazon.svg" alt="Amazon"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/microsoft.png" alt="Microsoft"></div>
+                <div class="partner-logo"><img src="./assets/microsoft.svg" alt="Microsoft"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/uber.png" alt="Uber"></div>
+                <div class="partner-logo"><img src="./assets/uber.svg" alt="Uber"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/dropbox.png" alt="Dropbox"></div>
+                <div class="partner-logo"><img src="./assets/dropbox.svg" alt="Dropbox"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/goggle.png" alt="Google"></div>
+                <div class="partner-logo"><img src="./assets/google.svg" alt="Google"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/uber.png" alt="Uber"></div>
+                <div class="partner-logo"><img src="./assets/uber.svg" alt="Uber"></div>
             </div>
             <div class="partner-item">
                 <p>Client Name</p>
-                <div class="partner-logo"><img src="./assets/amazon.png" alt="Amazon"></div>
+                <div class="partner-logo"><img src="./assets/amazon.svg" alt="Amazon"></div>
             </div>
         </div>
         
@@ -1669,7 +1677,7 @@ footer {
         <div class="testimonial-slider">
             <div class="testimonial-slides" id="testimonialSlides">
                 <div class="testimonial-slide">
-                    <img src="./assets/ibm.png" alt="IBM" class="company-logo">
+                    <img src="./assets/ibm.svg" alt="IBM" class="company-logo">
                     <p>Most calendars are designed for teams. Slate is designed for freelancers who want a simple way to plan their schedule.</p>
                     <div class="testimonial-user">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
@@ -1691,7 +1699,7 @@ footer {
                     </div>
                 </div>
                 <div class="testimonial-slide">
-                    <img src="./assets/microsoft.png" alt="Microsoft" class="company-logo">
+                    <img src="./assets/microsoft.svg" alt="Microsoft" class="company-logo">
                     <p>When you add work to your Slate calendar we automatically calculate useful insights about your productivity.</p>
                     <div class="testimonial-user">
                         <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Michael Chen">
@@ -1738,10 +1746,10 @@ footer {
                             <li>Pricing Feature</li>
                             <li>Pricing Feature</li>
                         </ul>
-                        <a href="#" class="btn btn-outline">Order Now</a>
+                        <a href="#" class="btn ">Order Now</a>
                     </div>
                     
-                    <div class="pricing-card active" data-plan="standard">
+                    <div class="pricing-card" data-plan="standard">
                         <div class="pricing-header">
                             <h3>STANDARD</h3>
                             <p>Organize across all apps by hand</p>
@@ -1760,7 +1768,7 @@ footer {
                             <li>Pricing Feature</li>
                             <li>Pricing Feature</li>
                         </ul>
-                        <a href="#" class="btn">Order Now</a>
+                        <a href="#" class="btn ">Order Now</a>
                     </div>
                     
                     <div class="pricing-card" data-plan="business">
@@ -1782,7 +1790,7 @@ footer {
                             <li>Pricing Feature</li>
                             <li>Pricing Feature</li>
                         </ul>
-                        <a href="#" class="btn btn-outline">Order Now</a>
+                        <a href="#" class="btn ">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -1816,16 +1824,16 @@ footer {
             <div class="contact-info">
                 <div class="contact-info-row">
                     <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <img src="./assets/map.svg" alt="Michael Chen" class="img">
                         <p>6386 Spring St undefined Anchorage,</p>
                         <span>Georgia 12473 United States</span>
                     </div>
                     <div class="info-item">
-                        <i class="fas fa-phone-alt"></i>
+                        <img src="./assets/phone.svg" alt="Michael Chen" class="img">
                         <p>(843) 555-0130</p>
                     </div>
                     <div class="info-item">
-                        <i class="fas fa-envelope"></i>
+                        <img src="./assets/mail.svg" alt="Michael Chen" class="img">
                         <p>willie.jennings@example.com</p>
                     </div>
                 </div>
