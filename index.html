@@ -855,6 +855,7 @@ section {
   width: 100%;
   height: 300px;
   overflow: hidden;
+  margin-left: 100px;
 }
 
 .map iframe {
@@ -886,7 +887,24 @@ section {
 }
 
 /* RESPONSIVE STYLES */
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
+    .contact{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .contact-info-row {
+    justify-content: space-around; /* Better distribution than space-between */
+    flex-wrap: wrap;
+    gap: 30px 20px;
+    margin-bottom: 20px;
+  }
+
+  .map{
+    margin-left: 20px;
+  }
+
   .contact-container {
     gap: 30px;
   }
